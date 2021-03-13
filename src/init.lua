@@ -120,15 +120,17 @@ end
 if IsClient() then
 	local player = Players.LocalPlayer
 	local cameraCFrame = CFrame.new()
-	local currentCamera = workspace.CurrentCamera
 	
 	player:GetAttributeChangedSignal("Rig"):Connect(function()
+		local currentCamera = workspace.CurrentCamera
 		cameraCFrame = currentCamera:GetRenderCFrame()
 	end)
 
 	return workspace.ChildAdded:Connect(function(rig)
 		if rig:GetAttribute("Transform") and rig.Name == player.Name then
 			StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Health, false)
+			
+			local currentCamera = workspace.CurrentCamera
 			
 			currentCamera.CameraType = Enum.CameraType.Scriptable
 			currentCamera.CFrame = cameraCFrame
