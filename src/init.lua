@@ -134,8 +134,11 @@ if IsClient() then
 			
 			currentCamera.CameraType = Enum.CameraType.Scriptable
 			currentCamera.CFrame = cameraCFrame
-			currentCamera.CameraSubject = rig:WaitForChild("Humanoid")
+			
+			local humanoid = rig:WaitForChild("Humanoid")
 			currentCamera.CameraType = Enum.CameraType.Custom
+			currentCamera.CameraSubject = humanoid
+			
 			
 			StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Health, true)
 		end
